@@ -17,17 +17,17 @@ jobs:
         name: Checkout
         uses: actions/checkout@v5.0.0
       -
-        name: Checkout
+        name: Checkout devdocs
         uses: actions/checkout@v5.0.0
         with:
           repository: freeCodeCamp/devdocs
           ref: main
-          path: docker/devdocs/devdocs
+          path: devdocs
       -
         name: Get ruby version
         id: ruby-version
         run: |
-          RUBY_VERSION=$(cat docker/devdocs/devdocs/Gemfile | grep '^ruby' | cut -d"'" -f2)
+          RUBY_VERSION=$(cat devdocs/Gemfile | grep '^ruby' | cut -d"'" -f2)
           echo "current ruby version: $RUBY_VERSION"
           echo ruby-version=$RUBY_VERSION >> $GITHUB_OUTPUT
       -
